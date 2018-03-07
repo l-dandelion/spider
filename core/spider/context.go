@@ -11,7 +11,7 @@ type Context struct {
 	Rule     string           //规则名
 	Request  *request.Request //请求
 	Response *http.Response   //响应
-	err      error            //错误
+	Err      error            //错误
 }
 
 //上下文对象池子
@@ -36,7 +36,7 @@ func PutContext(ctx *Context) {
 	ctx.Spider = nil
 	ctx.Request = nil
 	ctx.Response = nil
-	ctx.err = nil
+	ctx.Err = nil
 	contextPool.Put(ctx)
 }
 
@@ -48,5 +48,5 @@ func (self *Context) SetResponse(response *http.Response) *Context {
 
 //设置错误
 func (self *Context) SetError(err error) {
-	self.err = err
+	self.Err = err
 }

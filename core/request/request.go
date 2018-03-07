@@ -19,7 +19,14 @@ type Request struct {
 	Priority      int           //优先级
 	Proxy         string        //代理
 	Unique        string        //标识
+	DownloaderID  int           //下载器id
 }
+
+//下载器id编号
+const (
+	SURF_ID = iota
+	PHANTOM_ID
+)
 
 func (self *Request) SetUrl(url string) *Request {
 	self.Url = url
@@ -141,4 +148,13 @@ func (self *Request) GetProxy() string {
 
 func (self *Request) GetUnique() string {
 	return self.Unique
+}
+
+func (self *Request) SetDownloaderID(id int) *Request {
+	self.DownloaderID = id
+	return self
+}
+
+func (self *Request) GetDownloaderID() int {
+	return self.DownloaderID
 }
